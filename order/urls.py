@@ -29,7 +29,7 @@ urlpatterns = [
 #    url(r'^$', vw.index),
 #    url(r'^order/$', include('order.urls')),
     url(r'^$',order_v.index),
-    url(r'^add/$',order_v.add),
+    url(r'^add/$',order_v.add_order),
     url(r'^search/$',order_v.search),
 
 

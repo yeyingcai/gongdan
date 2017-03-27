@@ -1,7 +1,6 @@
 from django import forms
 
-class add_order(forms.Form):
-    fo_type = forms.IntegerField()
-    fo_title = forms.IntegerField()
-    fo_text = forms.IntegerField()
-    fo_user = forms.IntegerField()
+class add_order_forms(forms.Form):
+    fo_type = forms.CharField()
+    fo_title = forms.CharField()
+    fo_text = forms.Textarea()
