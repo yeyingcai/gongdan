@@ -47,4 +47,4 @@ class order_forms(models.Model):
 class order_comment(models.Model):
     order_id = models.ForeignKey(order_forms,blank=True,verbose_name=u'工单ID')
     comment_text = models.TextField(blank=True, null=True, default='',verbose_name=u"回复内容")
-    comment_user = models.ForeignKey(order_user,order_forms,blank=True,verbose_name=u'回复用户')
+    comment_user = models.ForeignKey(order_user,blank=True,verbose_name=u'回复用户')
