@@ -26,6 +26,16 @@ def add_order(request):
         order_b = add_order_forms()
         return render(request,'order/order_add.html',{'order_b':order_b})
 
+def not_order(request):
+    all_order = order_forms.objects.filter(order_status=0)
+#    print all_order
+    return render(request,'order/order_not.html',{'all_order':all_order})
+
+def disp_order(request,id):
+    order_info = order_forms.objects.get(id=id)
+    return render(request,'order/order_disp.html',{'order_info':order_info})
+
+
 def search(request):
     if 'q' in request.GET:
         message = 'YOU SEARCHE FOR:%r' % request.GET['q']

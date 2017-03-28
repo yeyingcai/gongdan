@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    {% include 'top.html' %}
+</head>
+<body>
+<table border="1" bgcolor="#7cfc00">
+
+    <tr>
+        <th width="150">工单编号</th>
+        <th width="150">工单类型</th>
+        <th width="150">工单名称</th>
+        <th width="150">工单详情</th>
+        <th width="150">申请人</th>
+        </tr>
+    </table>
+   {% for i in all_order %}
+<table border="1" bgcolor="aqua">
+    <tr>
+        <td width="150" bgcolor="#7fff00"><a href="/order/disp_order/{{ i.id }}">{{ i.id }}</a></td>
+        <td width="150">{{ i.order_type }}</td>
+        <td width="150" bgcolor="#7fff00"><a href="/order/disp_order/{{ i.id }}"> {{ i.order_title }}</a></td>
+        <td width="150">{{ i.order_text }}</td>
+        <td width="150">{{ i.faqi_user.r_name }}</td>
+    </tr>
+</table>
+{% endfor %}
+</body>
+</html>
