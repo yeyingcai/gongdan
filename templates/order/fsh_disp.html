@@ -6,8 +6,6 @@
 </head>
 <body>
 
-<a href="/order/close_order/{{ order_info.id }}"><input type="submit" name="close_order" id="99" value="关闭工单"></a>
-
 <li>{{ order_info.id }}</li>
 <li>{{ order_info.order_type }}</li>
 <li>{{ order_info.order_title }}</li>
@@ -21,12 +19,5 @@
     </tr>
 </table>
 {% endfor %}
-<div style="text-align:center">   <form method="post">
-    {% csrf_token %}
-<table>工单回复</table>
-<input type="text" name="comm_text">
-    <input type="submit" value="提交">
-
-    </form></div>
 </body>
 </html>

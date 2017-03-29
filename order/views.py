@@ -31,9 +31,39 @@ def not_order(request):
 #    print all_order
     return render(request,'order/order_not.html',{'all_order':all_order})
 
+def comm_order(request,order_id):
+    comm_info = order_comment.objects.filter(order_id=order_id)
+    return comm_info
+
+
 def disp_order(request,id):
     order_info = order_forms.objects.get(id=id)
-    return render(request,'order/order_disp.html',{'order_info':order_info})
+    comm_user = order_user.objects.get(id=order_info.faqi_user.id)
+    comm_reply = order_comment.objects.filter(order_id=id)
+    if request.method == "POST":
+        comm_text = request.POST.get('comm_text')
+        comm_or_id = id
+        comm_info = order_comment(order_id=order_info,comment_text=comm_text,comment_user=comm_user)
+        comm_info.save()
+        return redirect('/order/disp_order/% s' % id)
+    else:
+        return render(request,'order/order_disp.html',{'order_info':order_info,'comm_reply':comm_reply})
+
+
+def close_order(requset,id):
+    close_info = order_forms.objects.get(id=id)
+    close_info.order_status = 1
+    close_info.save()
+    return redirect('/order/not/')
+
+def fsh_order(request):
+    order_fsh_list = order_forms.objects.filter(order_status=1)
+    return render(request,'order/order_fsh.html',{'order_fsh_list':order_fsh_list})
+
+def fsh_disp(request,id):
+    order_info = order_forms.objects.get(id=id)
+    comm_reply = order_comment.objects.filter(order_id=id)
+    return render(request,'order/fsh_disp.html',{'order_info':order_info,'comm_reply':comm_reply})
 
 
 def search(request):

@@ -33,5 +33,8 @@ urlpatterns = [
     url(r'^search/$',order_v.search),
     url(r'^not/$',order_v.not_order),
     url(r'^disp_order/(\d+)/$',order_v.disp_order),
+    url(r'^close_order/(\d+)/$',order_v.close_order),
+    url(r'^fsh/$',order_v.fsh_order),
+    url(r'^disp_fsh/(\d+)$',order_v.fsh_disp),
 
 ]
