@@ -19,15 +19,23 @@ from django.contrib import admin
 from order import views as vw
 from django.conf import settings
 from django.conf.urls.static import static
+from asset import views as asset_vw
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+#    url(r'^admin/', include(admin.site.urls)),
 #    url(r'^css/(?P<path>.*)','django.views.static.serve',{'document_root':settings.CSS_ROOT}),
-    url(r'^img/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.IMG_ROOT}),
+#    url(r'^img/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.IMG_ROOT}),
 #    url(r'^js/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.JS_ROOT}),
 #    url(r'^font-awesome/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.FONT_ROOT}),
-    url(r'^$', vw.index),
-    url(r'^order/', include('order.urls')),
-    url(r'^asset/', include('asset.urls')),
-
+#    url(r'^$', vw.index),
+#    url(r'^order/$', include('order.urls')),
+    url(r'^$',asset_vw.index),
+    url(r'^idc/$',asset_vw.idc_index),
+    url(r'^host/$',asset_vw.host_index),
+    url(r'^vm/$',asset_vw.vm_index),
+#    url(r'^disp_order/(\d+)/$',order_v.disp_order),
+#    url(r'^close_order/(\d+)/$',order_v.close_order),
+    url(r'^net/$',asset_vw.net_index),
+    url(r'^docker/$',asset_vw.docker_index),
+    url(r'^pc/$', asset_vw.pc_index),
 
 ]
