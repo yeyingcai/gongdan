@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    {% include 'top.html' %}
+</head>
+<body>
+<table border="1" bgcolor="#7cfc00">
+
+    <tr>
+        <th width="150">ID</th>
+        <th width="150">IP地址</th>
+        <th width="150">主机名</th>
+        <th width="150">机房</th>
+        <th width="150">CPU</th>
+        <th width="150">内存</th>
+        <th width="150">硬盘</th>
+        <th width="150">系统型号</th>
+        <th width="150">品牌</th>
+        <th width="150">机柜号</th>
+        <th width="150">机器位置</th>
+        <th width="150">备注</th>
+        </tr>
+    </table>
+   {% for i in host_info %}
+<table border="1" bgcolor="aqua">
+    <tr>
+        <td width="150" bgcolor="#7fff00"><a href="/asset/host_disp/{{ i.id }}">{{ i.id }}</a></td>
+        <td width="150">{{ i.ip }}</td>
+        <td width="150">{{ i.hostname }}</td>
+        <td width="150">{{ i.idc.name }}</td>
+        <td width="150">{{ i.cpu }}</td>
+        <td width="150">{{ i.memory }}</td>
+        <td width="150">{{ i.disk }}</td>
+        <td width="150">{{ i.system_type }}</td>
+        <td width="150">{{ i.brand }}</td>
+        <td width="150">{{ i.cabinet }}</td>
+        <td width="150">{{ i.position }}</td>
+        <td width="150">{{ i.comment }}</td>
+
+
+        <!-- <td width="150" bgcolor="#7fff00"><a href="/order/disp_order/{{ i.id }}"> {{ i.order_title }}</a></td>
+        <td width="150">{{ i.order_text }}</td>
+        <td width="150">{{ i.faqi_user.r_name }}</td> -->
+    </tr>
+</table>
+{% endfor %}
+
+<a href="/asset/host_add/"><input type="submit" name="close_order" id="98" value="添加主机"></a>
+</body>
+</html>

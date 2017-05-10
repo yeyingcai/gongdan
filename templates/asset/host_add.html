@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    {% include 'top.html' %}
+</head>
+<body>
+<div style="text-align:center">   <form method="post">
+    {% csrf_token %}
+   IP地址: <input type="text" name="host_ip">
+    <br>
+    主机名:<input type="text" name="host_name">
+    <br>
+    idc信息：<input type="text" name="host_idc">
+    <br>
+    CPU信息：<input type="text" name="host_cpu">
+    <br>
+    内存信息：<input type="text" name="host_memory">
+    <br>
+    磁盘容量：<input type="text" name="host_disk">
+    <br>
+    系统型号：<input type="text" name="host_system_type">
+    <br>
+    资产品牌：<input type="text" name="host_brand">
+    <br>
+    机柜号：<input type="text" name="host_cabinet">
+    <br>
+    机器位置：<input type="text" name="host_position">
+    <br>
+    备注：<input type="text" name="host_comment">
+
+<input type="submit" value="提交">
+    </form></div>
+</body>
+</html>

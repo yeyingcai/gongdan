@@ -5,6 +5,18 @@
     {% include 'top.html' %}
 </head>
 <body>
+<div style="text-align:center">   <form method="post">
+    {% csrf_token %}
+    <input type="text" name="idc_name">
+    <input type="text" name="idc_addr">
+    <input type="text" name="idc_bandwidth">
+    <input type="text" name="idc_linkman">
+    <input type="text" name="idc_phone">
+    <input type="text" name="idc_operator">
+    <input type="text" name="idc_comment">
 
+
+<input type="submit" value="提交">
+    </form></div>
 </body>
 </html>

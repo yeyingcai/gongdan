@@ -20,7 +20,7 @@
    {% for i in idc_info %}
 <table border="1" bgcolor="aqua">
     <tr>
-        <td width="150" bgcolor="#7fff00"><a href="/order/disp_order/{{ i.id }}">{{ i.id }}</a></td>
+        <td width="150" bgcolor="#7fff00"><a href="/asset/idc_disp/{{ i.id }}">{{ i.id }}</a></td>
         <td width="150">{{ i.name }}</td>
         <td width="150">{{ i.address }}</td>
         <td width="150">{{ i.bandwidth }}</td>
@@ -35,5 +35,7 @@
     </tr>
 </table>
 {% endfor %}
+
+<a href="/asset/idc_add/"><input type="submit" name="close_order" id="98" value="添加机房"></a>
 </body>
 </html>
