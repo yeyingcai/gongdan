@@ -3,47 +3,62 @@
 <html>
 <head>
     {% include 'top.html' %}
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/static/css/bootstrap-responsive.min.css" />
+		<link rel="stylesheet" href="/static/css/uniform.css" />
+		<link rel="stylesheet" href="/static/css/select2.css" />
+		<link rel="stylesheet" href="/static/css/unicorn.main.css" />
+		<link rel="stylesheet" href="/static/css/unicorn.grey.css" class="skin-color" />
 </head>
 <body>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">
-            IDC详细信息列表
-        </h3>
-    </div>
-    <div class="panel-body">
-    <a href="/asset/idc_add/" class="button button-action button-pill"><button type="button" class="btn btn-primary">添加机房</button></a>
-<table border="1" bgcolor="#7cfc00">
-
-    <tr>
-        <th width="150">机房名称</th>
-        <th width="150">联系人</th>
-        <th width="150">联系电话</th>
-        <th width="150">运营商</th>
-        <th width="150">操作</th>
-        </tr>
-    </table>
-   {% for i in idc_info %}
-<table border="1" bgcolor="aqua">
-    <tr>
-        <div class="text-primary">
-        </div>
-         <td rowspan=$rowspan style='vertical-align: middle;text-align: center;' width="150" ><a href="/asset/idc_disp/{{ i.id }}">{{ i.name }}</a></td>
-        <td rowspan=$rowspan style='vertical-align: middle;text-align: center;' width="150">{{ i.linkman }}</td>
-        <td rowspan=$rowspan style='vertical-align: middle;text-align: center;' width="150">{{ i.phone }}</td>
-        <td rowspan=$rowspan style='vertical-align: middle;text-align: center;' width="150">{{ i.operator }}</td>
-        <td width="150" rowspan=$rowspan style="vertical-align: middle;text-align: center"><a href="/asset/idc_add/" class="button button-action button-pill"><button type="button" class="btn btn-primary btn-xs">删除</button> </a> <a href="/asset/idc_add/" class="button button-action button-pill"><button type="button" class="btn btn-success">编辑</button></a></td>
-
-
-
-        <!-- <td width="150" bgcolor="#7fff00"><a href="/order/disp_order/{{ i.id }}"> {{ i.order_title }}</a></td>
-        <td width="150">{{ i.order_text }}</td>
-        <td width="150">{{ i.faqi_user.r_name }}</td> -->
-    </tr>
-</table>
-{% endfor %}
-
-    </div>
+<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="icon-th"></i>
+								</span>
+								<h5>IDC机房信息列表</h5>
+							</div>
+							<div class="widget-content nopadding">
+								<table class="table table-bordered table-striped">
+									<thead>
+										<tr>
+											<th>机房名称</th>
+											<th>联系人</th>
+											<th>联系电话</th>
+											<th>运营商</th>
+                                            <th>操作</th>
+										</tr>
+									</thead>
+                                    {% for i in idc_info %}
+									<tbody>
+										<tr>
+											<td><a href="/asset/idc_disp/{{ i.id }}">{{ i.name }}</a></td>
+											<td>{{ i.linkman }}</td>
+											<td>{{ i.phone }}</td>
+											<td>{{ i.operator }}</td>
+                                            <td rowspan=$rowspan style='vertical-align: middle;text-align: center;'><a href="/asset/idc_add/" class="button button-action button-pill"><button type="button" class="btn btn-primary btn-xs">删除</button> </a> <a href="/asset/idc_add/" class="button button-action button-pill"><button type="button" class="btn btn-success">编辑</button></a></td>
+										</tr>
+									</tbody>
+                                    {% endfor %}
+								</table>
+							</div>
+						</div>
+                    </div>
+                </div>
 </div>
+
+<a href="/asset/idc_add/" class="button button-action button-pill"><button type="button" class="btn btn-primary">添加机房</button></a>
+            <script src="/static/js/jquery.min.js"></script>
+            <script src="/static/js/jquery.ui.custom.js"></script>
+            <script src="/static/js/bootstrap.min.js"></script>
+            <script src="/static/js/jquery.uniform.js"></script>
+            <script src="/static/js/select2.min.js"></script>
+            <script src="/static/js/jquery.dataTables.min.js"></script>
+            <script src="/static/js/unicorn.js"></script>
+            <script src="/static/js/unicorn.tables.js"></script>
 </body>
 </html>
