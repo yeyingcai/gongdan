@@ -5,28 +5,35 @@
     {% include 'top.html' %}
 </head>
 <body>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            IDC详细信息列表
+        </h3>
+    </div>
+    <div class="panel-body">
+    <a href="/asset/idc_add/" class="button button-action button-pill"><button type="button" class="btn btn-primary">添加机房</button></a>
 <table border="1" bgcolor="#7cfc00">
 
     <tr>
-        <th width="150">ID编号</th>
         <th width="150">机房名称</th>
-        <th width="150">机房地址</th>
-        <th width="150">机房带宽</th>
         <th width="150">联系人</th>
         <th width="150">联系电话</th>
         <th width="150">运营商</th>
+        <th width="150">操作</th>
         </tr>
     </table>
    {% for i in idc_info %}
 <table border="1" bgcolor="aqua">
     <tr>
-        <td width="150" bgcolor="#7fff00"><a href="/asset/idc_disp/{{ i.id }}">{{ i.id }}</a></td>
-        <td width="150">{{ i.name }}</td>
-        <td width="150">{{ i.address }}</td>
-        <td width="150">{{ i.bandwidth }}</td>
-        <td width="150">{{ i.linkman }}</td>
-        <td width="150">{{ i.phone }}</td>
-        <td width="150">{{ i.operator }}</td>
+        <div class="text-primary">
+        </div>
+         <td rowspan=$rowspan style='vertical-align: middle;text-align: center;' width="150" ><a href="/asset/idc_disp/{{ i.id }}">{{ i.name }}</a></td>
+        <td rowspan=$rowspan style='vertical-align: middle;text-align: center;' width="150">{{ i.linkman }}</td>
+        <td rowspan=$rowspan style='vertical-align: middle;text-align: center;' width="150">{{ i.phone }}</td>
+        <td rowspan=$rowspan style='vertical-align: middle;text-align: center;' width="150">{{ i.operator }}</td>
+        <td width="150" rowspan=$rowspan style="vertical-align: middle;text-align: center"><a href="/asset/idc_add/" class="button button-action button-pill"><button type="button" class="btn btn-primary btn-xs">删除</button> </a> <a href="/asset/idc_add/" class="button button-action button-pill"><button type="button" class="btn btn-success">编辑</button></a></td>
+
 
 
         <!-- <td width="150" bgcolor="#7fff00"><a href="/order/disp_order/{{ i.id }}"> {{ i.order_title }}</a></td>
@@ -36,6 +43,7 @@
 </table>
 {% endfor %}
 
-<a href="/asset/idc_add/"><input type="submit" name="close_order" id="98" value="添加机房"></a>
+    </div>
+</div>
 </body>
 </html>
