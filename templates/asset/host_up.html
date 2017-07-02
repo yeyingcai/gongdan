@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    {% include 'top.html' %}
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/static/css/bootstrap-responsive.min.css" />
+		<link rel="stylesheet" href="/static/css/uniform.css" />
+		<link rel="stylesheet" href="/static/css/select2.css" />
+		<link rel="stylesheet" href="/static/css/unicorn.main.css" />
+		<link rel="stylesheet" href="/static/css/unicorn.grey.css" class="skin-color" />
+</head>
+<body>
+<div class="container-fluid">
+    {% csrf_token %}
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="icon-align-justify"></i>
+								</span>
+								<h5>主机信息添加</h5>
+								<span class="label label-important">48 notices</span>
+							</div>
+							<div class="widget-content nopadding">
+								<form class="form-horizontal" method="post" action="#" name="basic_validate" id="basic_validate" novalidate="novalidate" />
+                                            {% csrf_token %}
+                                    <div class="control-group">
+                                        <label class="control-label">IP地址</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ host_info.ip }}" name="host_ip" id="host_ip" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">主机名称</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ host_info.hostname }}" name="host_name" id="host_name" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">机房名称</label>
+                                        <div class="controls">
+											<select class="form-control" type="text" name="host_idc">
+                                                {% for i in idc_info %}
+												<option />{{ i.name }}
+                                                {% endfor %}
+											</select>
+										</div>
+
+                                        <!--
+                                        <div class="controls">
+                                            <input type="text" name="host_idc" id="host_idc" />
+                                        </div> -->
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label">CPU信息</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ host_info.cpu }}" name="host_cpu" id="host_cpu" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">内存信息</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ host_info.memory }}" name="host_memory" id="host_memory" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">磁盘信息</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ host_info.disk }}" name="host_disk" id="host_disk" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">系统型号</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ host_info.system_type }}" name="host_system_type" id="host_system_type" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">资产品牌</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ host_info.brand }}" name="host_brand" id="host_brand" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">机柜号</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ host_info.cabinet }}" name="host_cabinet" id="host_cabinet" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">机器位置</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ host_info.position }}" name="host_position" id="host_position" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">备注</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ host_info.comment }}" name="host_comment" id="host_comment" />
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <input type="submit" value="保存" class="btn btn-primary" />
+                                    </div>
+                                </form>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+<!--
+<div style="text-align:center">   <form method="post">
+    {% csrf_token %}
+   IP地址: <input type="text" name="host_ip">
+    <br>
+    主机名:<input type="text" name="host_name">
+    <br>
+    idc信息：<input type="text" name="host_idc">
+    <br>
+    CPU信息：<input type="text" name="host_cpu">
+    <br>
+    内存信息：<input type="text" name="host_memory">
+    <br>
+    磁盘容量：<input type="text" name="host_disk">
+    <br>
+    系统型号：<input type="text" name="host_system_type">
+    <br>
+    资产品牌：<input type="text" name="host_brand">
+    <br>
+    机柜号：<input type="text" name="host_cabinet">
+    <br>
+    机器位置：<input type="text" name="host_position">
+    <br>
+    备注：<input type="text" name="host_comment">
+
+<input type="submit" value="提交">
+    </form></div> -->
+</body>
+</html>

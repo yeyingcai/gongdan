@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    {% include 'top.html' %}
+</head>
+<body>
+
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="icon-align-justify"></i>
+								</span>
+								<h5>机房信息添加</h5>
+								<span class="label label-important">48 notices</span>
+							</div>
+							<div class="widget-content nopadding">
+								<form class="form-horizontal" method="post" action="#" name="basic_validate" id="basic_validate" novalidate="novalidate" />
+                                            {% csrf_token %}
+                                    <div class="control-group">
+                                        <label class="control-label">机房名称</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ idc_info.name }}" name="idc_name" id="idc_name" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">机房地址</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ idc_info.address }}" name="idc_addr" id="idc_addr" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">机房带宽</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ idc_info.bandwidth }}" name="idc_bandwidth" id="idc_bandwidth" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">联系人</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ idc_info.linkman }}" name="idc_linkman" id="idc_linkman" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">联系电话</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ idc_info.phone }}" name="idc_phone" id="idc_phone" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">运营商</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ idc_info.operator }}" name="idc_operator" id="idc_operator" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">备注</label>
+                                        <div class="controls">
+                                            <input type="text" value="{{ idc_info.comment }}" name="idc_comment" id="idc_comment" />
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <input type="submit" value="保存" class="btn btn-primary" />
+                                    </div>
+                                </form>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+
+
+
+
+
+
+<!-- <div style="text-align:center">   <form method="post">
+    {% csrf_token %}
+    <input type="text" name="idc_name">
+    <input type="text" name="idc_addr">
+    <input type="text" name="idc_bandwidth">
+    <input type="text" name="idc_linkman">
+    <input type="text" name="idc_phone">
+    <input type="text" name="idc_operator">
+    <input type="text" name="idc_comment">
+
+
+<input type="submit" value="提交">
+    </form></div> -->
+</body>
+</html>
