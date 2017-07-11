@@ -1,32 +1,125 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
 {% include 'top.html' %}
 </head>
+<style>
+    .div-left{width:300px;height:120px;border:1px solid #000;float:left}
+</style>
+
 <body>
+        <div class="" id="content">
+			<div class="pull-left">
 
-<a href="/order/close_order/{{ order_info.id }}"><input type="submit" name="close_order" id="99" value="关闭工单"></a>
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="icon-th-list"></i>
+								</span>
+								<h5>工单描述</h5>
+								<div class="buttons">
+									<a title="Icon Title" class="btn btn-mini" href="/order/close_order/{{ order_info.id }}"><i class="icon-hand-right"></i>关闭工单</a>
+								</div>
+							</div>
+							<div class="widget-content">
+								<div class="invoice-content">
+									<div class="invoice-head">
+										<div class="invoice-meta">
+											要求完成时间： <span class="invoice-number"></span><span class="invoice-date">日期: 2012-07-15</span>
+										</div>
+										<div class="invoice-to">
+                                            <table width="100%">
+                                                <tbody>
+                                                <tr>
+                                                    <th>工单编号  ：</th>
+                                                    <td>{{ order_info.id }}</td>
+                                                </tr>
+                                                <td>
+                                                <tr>
+                                                    <th>工单类型  ：</th>
+                                                    <td>{{ order_info.order_type }}</td>
+                                                </tr>
+                                                <td>
+                                                <tr>
+                                                    <th>工单标题  ：</th>
+                                                    <td>{{ order_info.order_title }}</td>
+                                                </tr>
+                                                <td>
+                                                 <td>
+                                                    <td>
+                                                 <tr>
+                                                    <th>工单申请人  ：</th>
+                                                    <td>{{ order_info.faqi_user.r_name }}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+										</div>
+									</div>
+                                <div class="container-fluid">
+				                    <div class="row-fluid">
+					                    <div class="span12">
+						                    <div class="widget-box">
+							                    <div class="widget-title">
+								                <span class="icon">
+                                                    <i class="icon-envelope"></i>
+								                </span>
+								                <h5>工单详情</h5>
+							                    </div>
+							                <div class="widget-content">
+								            {{ order_info.order_text }}
+							                </div>
+                                                   {% for i in comm_reply %}
+                                                <p>
+                                                    <i class="icon-user"></i><td>&#32;
+                                                    <span class="msg-block">
+                                                        <strong>{{ i.comment_user.r_name }}:</strong>&#12288;
+                                                        <span class="msg">{{ i.comment_text }}</span>
 
-<li>{{ order_info.id }}</li>
-<li>{{ order_info.order_type }}</li>
-<li>{{ order_info.order_title }}</li>
-<li>{{ order_info.order_text }}</li>
-<li>{{ order_info.faqi_user.r_name }}</li>
-   {% for i in comm_reply %}
-<table border="1" bgcolor="aqua">
-    <tr>
-        <td width="150">{{ i.comment_text }}</td>
-        <td width="150">{{ i.comment_user.r_name }}</td>
-    </tr>
-</table>
-{% endfor %}
-<div style="text-align:center">   <form method="post">
-    {% csrf_token %}
-<table>工单回复</table>
-<input type="text" name="comm_text">
-    <input type="submit" value="提交">
+                                                    </span>
+                                                </p>
+                                                {% endfor %}
+                                             <div class="chat-message well">
+                                                 <form method="post">
+                                                     {% csrf_token %}
+										<button class="btn btn-success" type="submit">工单回复</button>
 
-    </form></div>
+										<span class="input-box">
+											<input type="text" name="comm_text" id="msg-box" />
+										</span>
+                                                     </form>
+								   </div>
+                                        </div>
+						                </div>
+					                </div>
+				                </div>
+									<p class="amount-word">
+										Amount in Word: <span>Five Hundred and Fifty Taka Only</span>
+									</p>
+									<h5>A heading</h5>
+									<p>
+										Nam pharetra sodales tincidunt. Phasellus posuere faucibus tempus. Ut dapibus ullamcorper nulla, ac pellentesque purus tincidunt nec. Ut non leo nec erat venenatis pharetra.
+									</p>
+									<p class="help-block">
+										<strong>Note:</strong> Nam pharetra sodales tincidunt. Phasellus posuere faucibus tempus. Ut dapibus ullamcorper nulla, ac pellentesque purus tincidunt nec. Ut non leo nec erat venenatis pharetra.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div id="footer" class="span12">
+						2012 &copy; Unicorn Admin. Brought to you by <a href="https://wrapbootstrap.com/user/diablo9983">diablo9983</a>
+					</div>
+				</div>
+			</div>
+		</div>
+            <script src="js/jquery.min.js"></script>
+            <script src="js/jquery.ui.custom.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/unicorn.js"></script>
 </body>
 </html>

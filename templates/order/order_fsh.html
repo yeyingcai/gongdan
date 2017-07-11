@@ -3,28 +3,56 @@
 <html>
 <head>
     {% include 'top.html' %}
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/static/css/bootstrap-responsive.min.css" />
+		<link rel="stylesheet" href="/static/css/uniform.css" />
+		<link rel="stylesheet" href="/static/css/select2.css" />
+		<link rel="stylesheet" href="/static/css/unicorn.main.css" />
+		<link rel="stylesheet" href="/static/css/unicorn.grey.css" class="skin-color" />
 </head>
 <body>
-<table border="1" bgcolor="#7cfc00">
+<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="icon-th"></i>
+								</span>
+								<h5>工单申请列表</h5>
+							</div>
+							<div class="widget-content nopadding">
+								<table class="table table-bordered table-striped">
+									<thead>
+										<tr>
+											<th>工单编号</th>
+											<th>工单类型</th>
+											<th>工单名称</th>
+											<th>工单详情</th>
+                                            <th>申请人</th>
+                                            <th>操作</th>
+										</tr>
+									</thead>
+                                    {% for i in order_fsh_list %}
+									<tbody>
+										<tr>
+											<td>{{ i.id }}</td>
+											<td>{{ i.order_type }}</td>
+											<td>{{ i.order_title }}</td>
+											<td>{{ i.order_text }}</td>
+                                            <td>{{ i.faqi_user.r_name }}</td>
+                                            <td rowspan=$rowspan style='vertical-align: middle;text-align: center;'><a href="/order/disp_fsh/{{ i.id }}" class="button button-action button-pill"><button type="button" class="btn btn-success">查看详情</button></a></td>
+										</tr>
+									</tbody>
+                                    {% endfor %}
+								</table>
+							</div>
+						</div>
+                    </div>
+                </div>
+</div>
 
-    <tr>
-        <th width="150">工单编号</th>
-        <th width="150">工单类型</th>
-        <th width="150">工单名称</th>
-        <th width="150">工单详情</th>
-        <th width="150">申请人</th>
-        </tr>
-    </table>
-   {% for i in order_fsh_list %}
-<table border="1" bgcolor="aqua">
-    <tr>
-        <td width="150" bgcolor="#7fff00"><a href="/order/disp_fsh/{{ i.id }}">{{ i.id }}</a></td>
-        <td width="150">{{ i.order_type }}</td>
-        <td width="150" bgcolor="#7fff00"><a href="/order/disp_fsh/{{ i.id }}"> {{ i.order_title }}</a></td>
-        <td width="150">{{ i.order_text }}</td>
-        <td width="150">{{ i.faqi_user.r_name }}</td>
-    </tr>
-</table>
-{% endfor %}
+<a href="/order/not/" class="button button-action button-pill"><button type="button" class="btn btn-primary">查看未完成</button></a>
 </body>
 </html>
