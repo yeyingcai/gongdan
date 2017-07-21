@@ -4,9 +4,43 @@ from django.http import HttpResponse
 from .forms import *
 from order.models import *
 import sys
+from django.contrib import auth
 # Create your views here.
 
+def login_view(request):
+  username = request.POST.get('username', '')
+  password = request.POST.get('password', '')
+  user = auth.authenticate(username=username, password=password)
+  if user is not None and user.is_active:
+    # Correct password, and the user is marked "active"
+    auth.login(request, user)
+    # Redirect to a success page.
+    return HttpResponseRedirect("/order/")
+  else:
+    # Show an error page
+    return HttpResponseRedirect("/account/invalid/")
+
+
+def login(request):
+    if request.method == "POST":
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        user = auth.authenticate(username=username, password=password)
+        if user is not None and user.is_active:
+        # Correct password, and the user is marked "active"
+            auth.login(request, user)
+        # Redirect to a success page.
+            return HttpResponseRedirect("/order/")
+            print 'aaaaaaa'
+        else:
+        # Show an error page
+            return HttpResponseRedirect("/sdsdsd/sdsds/")
+            print 'bbbbbb'
+    else:
+        return render(request,'login.html')
+
 def index(request):
+    print 'index'
     return render(request,'index.html')
 
 def order(request):
