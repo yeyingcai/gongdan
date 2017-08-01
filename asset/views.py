@@ -4,23 +4,26 @@ from django.http import HttpResponse
 from order.models import *
 from asset.models import *
 import sys
+from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='/login/')
 def index(request):
     return render(request,'index.html')
-
+@login_required(login_url='/login/')
 def idc_index(request):
     idc_info = j_IDC.objects.all()
     return render(request,'asset/idc_index.html',{'idc_info':idc_info})
-
+@login_required(login_url='/login/')
 def idc_disp(request,id):
     idc_info = j_IDC.objects.get(id=id)
     return render(request,'asset/idc_disp.html',{'idc_info':idc_info})
-
+@login_required(login_url='/login/')
 def idc_del(request,id):
     del_info = j_IDC.objects.get(id=id).delete()
     idc_info = j_IDC.objects.all()
     return render(request,'asset/idc_index.html',{'idc_info':idc_info})
-
+@login_required(login_url='/login/')
 def idc_up(request,id):
     if request.method == "POST":
         idc_info = j_IDC.objects.get(id=id)
@@ -45,7 +48,7 @@ def idc_up(request,id):
         idc_info = j_IDC.objects.get(id=id)
         return render(request,'asset/idc_update.html',{'idc_info':idc_info})
 
-
+@login_required(login_url='/login/')
 def idc_add(request):
     if request.method == "POST":
         idc_name = request.POST.get('idc_name')
@@ -61,18 +64,18 @@ def idc_add(request):
         return redirect('/asset/idc/')
     else:
         return render(request, 'asset/idc_add.html')
-
+@login_required(login_url='/login/')
 def host_index(request):
     host_info = j_Asset.objects.all()
     idc_info = j_IDC.objects.all()
     return render(request,'asset/host_index.html',{'host_info':host_info,'idc_info':idc_info})
-
+@login_required(login_url='/login/')
 def host_del(request,id):
     del_info = j_Asset.objects.get(id=id).delete()
     host_info = j_Asset.objects.all()
     idc_info = j_IDC.objects.all()
     return render(request,'asset/host_index.html',{'host_info':host_info,'idc_info':idc_info})
-
+@login_required(login_url='/login/')
 def host_up(request,id):
     if request.method == "POST":
         host_info = j_Asset.objects.get(id=id)
@@ -107,7 +110,7 @@ def host_up(request,id):
         idc_info = j_IDC.objects.all()
         return render(request,'asset/host_up.html',{'host_info':host_info,'idc_info':idc_info})
 
-
+@login_required(login_url='/login/')
 def host_add(request):
     if request.method == "POST":
         host_ip = request.POST.get('host_ip')
@@ -129,15 +132,15 @@ def host_add(request):
     else:
         idc_info = j_IDC.objects.all()
         return render(request,'asset/host_add.html',{'idc_info':idc_info})
-
+@login_required(login_url='/login/')
 def vm_index(request):
     return render(request,'idc_index.html')
-
+@login_required(login_url='/login/')
 def net_index(request):
     return render(request,'host_index.html')
-
+@login_required(login_url='/login/')
 def docker_index(request):
     return render(request,'idc_index.html')
-
+@login_required(login_url='/login/')
 def pc_index(request):
     return render(request,'host_index.html')

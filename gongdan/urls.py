@@ -25,9 +25,11 @@ urlpatterns = [
     url(r'^img/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.IMG_ROOT}),
 #    url(r'^js/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.JS_ROOT}),
 #    url(r'^font-awesome/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.FONT_ROOT}),
-    url(r'^$', vw.login),
+    url(r'^$', vw.index),
     url(r'^order/', include('order.urls')),
     url(r'^asset/', include('asset.urls')),
+    url(r'^login/',vw.login),
+    url(r'^logout/',vw.alogout),
 
 
 ]
